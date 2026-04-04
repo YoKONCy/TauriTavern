@@ -19,6 +19,7 @@ import { extractErrorText, resolveHostErrorResponse } from './kernel/host-error-
 import { installMainApiOptionParking } from './adapters/st/main-api-selector-option-parking.js';
 import { installWorldInfoGlobalSelectorSelect2Enforcer } from './adapters/st/world-info-global-selector-select2-enforcer.js';
 import { installChatApi } from './api/chat.js';
+import { installDbApi } from './api/db.js';
 import { installDevApi } from './api/dev.js';
 import { installWorldInfoApi } from './api/world-info.js';
 import { initializeTauriIntegration } from './bootstrap/initialize-tauri-integration.js';
@@ -264,7 +265,7 @@ export function bootstrapTauriMain() {
     installNativeShareBridge();
 
     const context = createTauriMainContext({ invoke, convertFileSrc });
-    installHostAbi(context); installChatApi(context); installDevApi(context); installWorldInfoApi();
+    installHostAbi(context); installChatApi(context); installDbApi(context); installDevApi(context); installWorldInfoApi();
     installMainApiOptionParking();
     installWorldInfoGlobalSelectorSelect2Enforcer();
     if (perfEnabled) {
